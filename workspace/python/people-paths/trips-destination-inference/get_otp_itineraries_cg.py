@@ -22,6 +22,9 @@ sort_cols = boarding_key_cols + gps_key_cols[:-1] + ['gps_datetime']
 max_match_diff = 1800
 
 #Functions
+def printUsage():
+    print "Usage: " + sys.argv[0] + " <enhanced-buste-folder-path> <output-folder-path> <otp-server-url> <initial-date> <final-date>"
+    
 def get_otp_itineraries(otp_url,o_lat,o_lon,d_lat,d_lon,date,time,verbose=False):
     otp_http_request = 'routers/{}/plan?fromPlace={},{}&toPlace={},{}&mode=TRANSIT,WALK&date={}&time={}&numItineraries=10&maxWalkingDistance=1000'
 	

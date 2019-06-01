@@ -61,12 +61,12 @@ public class PreProcessingBULMAInput {
 			String busCode = attributes[12]; //vehicleId
 			String latitude = attributes[16];
 			String longitude = attributes[6];
-			String timestamp = attributes[8].split(" ")[1]; // positionTime: to get just the time
+			String dateTime = attributes[8]; // positionTime: to get just the time
 			String route = attributes[9]; //routeId
 			int gpsID = ++gpsIDCount;
 			
 			String newLine = busCode + DELIMITER + latitude + DELIMITER + longitude + DELIMITER + 
-					timestamp + DELIMITER + route + DELIMITER + gpsID;
+					dateTime + DELIMITER + route + DELIMITER + gpsID;
 			
 			filteredGPSData.add(newLine);
 		}

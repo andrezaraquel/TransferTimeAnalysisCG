@@ -173,7 +173,7 @@ public class MatchingGPSShapeStop {
 				};
 
 				rddOutputBuLMABusTE.mapPartitionsWithIndex(insertHeader, false)
-						.saveAsTextFile(outputPath + SLASH + "BuLMABusTE_" + stringFileDate);
+						.saveAsTextFile(outputPath + SLASH + "MatchingGP3S_" + stringFileDate);
 				
 			}
 		}
@@ -1293,8 +1293,11 @@ public class MatchingGPSShapeStop {
 
 					public Tuple2<String, OutputString> call(String stringOutput) throws Exception {
 						String[] splittedEntry = stringOutput.split(FILE_SEPARATOR);
-						OutputString str = new OutputString(stringOutput);
-						
+						OutputString str = new OutputString(splittedEntry[0], splittedEntry[1], splittedEntry[2],
+								splittedEntry[3], splittedEntry[4], splittedEntry[5], splittedEntry[6], splittedEntry[7],
+								splittedEntry[8], splittedEntry[9], splittedEntry[10], splittedEntry[11], splittedEntry[12], 
+								splittedEntry[13], splittedEntry[14], splittedEntry[15]);
+						str.setOutputString(stringOutput);
 						return new Tuple2<String, OutputString>(splittedEntry[8], str);
 					}
 				}).groupByKey();
@@ -1316,8 +1319,8 @@ public class MatchingGPSShapeStop {
 						String nextTimeString = null;
 						for (int i = OutputList.size() - 1; i >= 0; i--) {
 							String currentString = OutputList.get(i).getOutputString();
-							String currentBusStop = currentString.split(FILE_SEPARATOR)[14];
 
+							String currentBusStop = currentString.split(FILE_SEPARATOR)[14];
 							if (!currentBusStop.equals("-")) {
 								String currentTimeString = currentString.split(FILE_SEPARATOR)[13];
 								if (!currentTimeString.equals("-")) {

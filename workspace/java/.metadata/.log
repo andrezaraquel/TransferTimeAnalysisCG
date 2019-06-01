@@ -35,3 +35,15 @@ java.io.FileNotFoundException:
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1469)
 	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:46)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.eclipse.jface.text 2 0 2019-06-01 09:12:30.604
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2019-06-01 09:12:30.611
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2019-06-01 09:14:01.180
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2019-06-01 09:14:01.180
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'

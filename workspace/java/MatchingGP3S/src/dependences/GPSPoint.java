@@ -20,20 +20,31 @@ public class GPSPoint extends GeoPoint {
 	private float distanceClosestShapePoint;
 	private int thresholdShape;
 	private int problem;
+	private String dateTime;
 
-	public GPSPoint(String busCode, String latitude, String longitude, String timeStamp, String lineCode) {
+	public GPSPoint(String busCode, String latitude, String longitude, String dateTime, String lineCode) {
 		super(latitude, longitude);
 		this.busCode = busCode;
-		this.timeStamp = timeStamp.replace(" ", "").replace("\"", "");
+		this.dateTime = dateTime.replace("\"", "");
+		this.timeStamp = this.dateTime.split(" ")[1];
 		this.lineCode = lineCode;
 		this.problem = Problem.NO_PROBLEM.getCode();
 	}
 
-	public GPSPoint(String busCode, String latitude, String longitude, String timeStamp, String lineCode,
+	public GPSPoint(String busCode, String latitude, String longitude, String dateTime, String lineCode,
 			String gpsId) {
-		this(busCode, latitude, longitude, timeStamp, lineCode);
+		this(busCode, latitude, longitude, dateTime, lineCode);
 		this.gpsId = gpsId;
 		this.problem = Problem.NO_PROBLEM.getCode();
+	}
+	
+
+	public String getDateTime() {
+		return dateTime;
+	}
+
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
 	}
 
 	public int getProblem() {

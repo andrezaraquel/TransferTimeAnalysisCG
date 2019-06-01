@@ -42,7 +42,7 @@ public class OutputString implements Serializable, Comparable<OutputString>{
 //	Matching GPS-Shape-Stop output
 	public OutputString(String route, String tripNum, String shapeId, String routeFrequency, String shapeSequence, String latShape,
 			String lonShape, String distanceTraveled, String busCode, String gpsPointId, String latGPS, String lonGPS, String
-			distanceToShapePoint, String timestamp, String stopID, String tripProblem) {
+			distanceToShapePoint, String dateTime, String stopID, String tripProblem) {
 		
 		this.tripNum = tripNum;
 		this.route = route;
@@ -53,12 +53,16 @@ public class OutputString implements Serializable, Comparable<OutputString>{
 		this.lonShape = Double.valueOf(lonShape);
 		this.gpsPointId = gpsPointId;
 		this.busCode = busCode;
-		this.timestamp = timestamp.split(" ")[1];
+		
+		this.timestamp = "-";
+		if (!dateTime.equals("-")) {
+			this.timestamp = dateTime.split(" ")[1];
+		}
 		this.latGPS = latGPS;
 		this.lonGPS = lonGPS;
 		this.distanceTraveled = distanceTraveled;
 		this.tripProblem = tripProblem;
-		this.gps_datetime = timestamp; // date and time
+		this.gps_datetime = dateTime; // date and time
 		this.stopID = stopID;
 		this.distanceToShapePoint = distanceToShapePoint;
 	}

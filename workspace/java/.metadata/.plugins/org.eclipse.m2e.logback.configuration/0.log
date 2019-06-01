@@ -146,3 +146,175 @@
 2019-06-01 09:00:13,835 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
 2019-06-01 09:00:13,836 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2019-06-01 09:00:13,836 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:12:07,157 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:12:07,157 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:12:07,158 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:12:07,158 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:13:21,422 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:13:21,422 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:13:21,425 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:13:21,425 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:13:53,430 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:13:53,430 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:13:53,431 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:13:53,431 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:14:10,573 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:14:10,573 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:14:10,574 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:14:10,575 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:16:45,909 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:16:45,909 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:16:45,910 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:16:45,910 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:16:48,232 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:16:48,232 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:16:48,233 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:16:48,233 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:16:52,452 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:16:52,453 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:16:52,454 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:16:52,454 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:17:07,059 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:17:07,060 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:17:07,061 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:17:07,061 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:17:49,321 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:17:49,335 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:17:49,336 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:17:49,336 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:22:46,155 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:22:46,155 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:22:46,157 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:22:46,157 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:22:49,690 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:22:49,691 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:22:49,692 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:22:49,692 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:22:52,811 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:22:52,812 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:22:52,813 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:22:52,813 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:24:50,662 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:24:50,685 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:24:50,686 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:24:50,686 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:24:55,682 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:24:55,683 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:24:55,684 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:24:55,685 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:24:57,921 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:24:57,922 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:24:57,923 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:24:57,923 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:25:01,279 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:25:01,279 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:25:01,280 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:25:01,280 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:25:05,064 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:25:05,064 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:25:05,066 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:25:05,066 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:29:01,130 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:29:01,130 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:29:01,131 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:29:01,131 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:29:08,821 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:29:08,822 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:29:08,822 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:29:08,822 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:29:11,786 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:29:11,786 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:29:11,786 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:29:11,787 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:29:13,890 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:29:13,890 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:29:13,891 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:29:13,891 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:29:20,516 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:29:20,516 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:29:20,516 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:29:20,517 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:32:28,636 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:32:28,636 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:32:28,637 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:32:28,637 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:33:22,055 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:33:22,055 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:33:22,056 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:33:22,056 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:33:39,567 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:33:39,567 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:33:39,568 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:33:39,568 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:33:44,196 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:33:44,196 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:33:44,197 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:33:44,197 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:35:50,439 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:35:50,452 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:35:50,453 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:35:50,453 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:35:54,531 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:35:54,531 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:35:54,532 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:35:54,532 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:35:56,496 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:35:56,496 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:35:56,498 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:35:56,498 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:36:00,336 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:36:00,336 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:36:00,337 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:36:00,338 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:37:29,288 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:37:29,288 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:37:29,289 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:37:29,290 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:37:38,198 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:37:38,198 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:37:38,200 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:37:38,200 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:37:45,249 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:37:45,249 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:37:45,249 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:37:45,250 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:37:47,378 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:37:47,378 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:37:47,379 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:37:47,379 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:37:49,613 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:37:49,613 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:37:49,614 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:37:49,614 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:37:52,267 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:37:52,267 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:37:52,268 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:37:52,268 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:39:42,002 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:39:42,002 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:39:42,003 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:39:42,004 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:47:03,362 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:47:03,362 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:47:03,363 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:47:03,363 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:47:07,780 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:47:07,780 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:47:07,781 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:47:07,782 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:47:09,581 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:47:09,581 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:47:09,582 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:47:09,582 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:50:51,984 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:50:52,004 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:50:52,007 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:50:52,007 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:53:12,071 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:53:12,072 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:53:12,073 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:53:12,073 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources
+2019-06-01 09:53:29,012 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:53:29,012 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/main/resources
+2019-06-01 09:53:29,013 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-06-01 09:53:29,013 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/veruska/Documentos/Mestrado/TransferTimeAnalysisCG/workspace/java/MatchingGP3S/src/test/resources

@@ -1,0 +1,88 @@
+---
+title: "isomap"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(httr)
+library(tools)
+library(tidyverse)
+library(leaflet)
+```
+
+Tá faltando atualizar o otp para o link funcinoar e retornar o geojson da cidade.
+tutorial geral: https://xang1234.github.io/isochrone/
+subir otp: https://github.com/marcusyoung/otp-tutorial/blob/master/intro-otp.Rmd
+
+em caso de erro, executar:
+- sudo apt-get install -y libprotobuf-dev protobuf-compiler
+- sudo apt-get install -y libjq-dev
+- sudo apt-get install -y libudunits2-dev
+- sudo apt-get install -y libv8-dev
+- sudo apt-get install libgdal-dev
+
+baixar e instalar: (https://cran.r-project.org/web/packages/[V8]/)
+- V8
+- rgdal
+- units
+- sf
+- jqr
+- protolite
+- geojson
+- geojsonio
+
+```{r cars}
+
+get_geojson <- function(lat,lng){
+
+current <- GET(
+  "http://localhost:5601/otp/routers/current/isochrone",
+  query = list(
+    fromPlace = paste(lat,lng,sep = ","), # latlong of place
+    mode = "WALK,TRANSIT", # modes we want the route planner to use
+    #date = "07-10-2018",
+    #time= "08:00am",
+    maxWalkDistance = 1600, # in metres
+    walkReluctance = 5,
+    minTransferTime = 60, # in secs
+    cutoffSec = 900,
+    cutoffSec = 1800,
+    cutoffSec = 2700,
+    cutoffSec = 3600
+  )
+)
+
+current <- content(current, as = "text", encoding = "UTF-8")
+write(current, file = "cg_map.geojson")
+}
+
+get_geojson(lat = -7.220618,lng = -35.889375)
+
+```
+
+
+
+```{r pressure, echo=FALSE}
+iso <- geojsonio::geojson_read("cg_map.geojson", what = "sp")
+
+pal=c('cyan','gold','tomato','red')
+
+map <-leaflet(iso) %>%
+    setView(lng = -35.889375, lat = -7.220618, zoom = 11) %>%
+  addProviderTiles(providers$CartoDB.DarkMatter,
+                   options = providerTileOptions(opacity = 0.8))%>%  
+  addPolygons(stroke = TRUE, weight=0.5,
+              smoothFactor = 0.3, color="black",
+              fillOpacity = 0.1,fillColor =pal ) %>%
+  addLegend(position="bottomleft",colors=rev(c("lightskyblue","greenyellow","gold","tomato")),
+            labels=rev(c("60 min","45 min",
+                     "30 min","15 min")),
+            opacity = 0.6,
+            title="Travel Time with Public Transport")
+
+map
+```
+
+```{r}
+```
+

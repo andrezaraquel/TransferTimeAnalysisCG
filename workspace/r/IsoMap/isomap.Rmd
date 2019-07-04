@@ -33,22 +33,22 @@ baixar e instalar: (https://cran.r-project.org/web/packages/[V8]/)
 
 ```{r cars}
 
-get_geojson <- function(lat,lng){
+get_geojson <- function(fromLat,fromLng,toLat,toLng){
 
 current <- GET(
-  "http://localhost:5601/otp/routers/current/isochrone",
+  "http://localhost:5601/otp/routers/cg/isochrone",
   query = list(
-    fromPlace = paste(lat,lng,sep = ","), # latlong of place
-    mode = "WALK,TRANSIT", # modes we want the route planner to use
-    #date = "07-10-2018",
-    #time= "08:00am",
+    fromPlace = paste(fromLat, fromLng,sep = ","), # latlong of place
+    toPlace = paste(toLat, toLng,sep = ","), # latlong of place
+    mode = "TRANSIT,WALK", # modes we want the route planner to use
+    date = "04/04/2017",
+    time= "07:00:00",
     maxWalkDistance = 1600, # in metres
     walkReluctance = 5,
     minTransferTime = 60, # in secs
-    cutoffSec = 900,
-    cutoffSec = 1800,
-    cutoffSec = 2700,
-    cutoffSec = 3600
+    cutoffSec = 1800,  # 30 min
+    cutoffSec = 3600, # 60 min
+    cutoffSec = 4200  # 70 min
   )
 )
 
@@ -56,7 +56,14 @@ current <- content(current, as = "text", encoding = "UTF-8")
 write(current, file = "cg_map.geojson")
 }
 
-get_geojson(lat = -7.220618,lng = -35.889375)
+# lat = -7.220618,lng = -35.889375 integração
+# -7.216598, -35.916106 - ufcg
+# -7.253764, -35.887224 - tambor
+# -7.305623, -35.780192 - galante
+# -7.182618, -35.977059 - são josé da mata
+
+get_geojson(fromLat = -7.253764, fromLng = -35.887224, #tambor
+            toLat = -7.220618,toLng = -35.889375) #integração
 
 ```
 
@@ -65,24 +72,30 @@ get_geojson(lat = -7.220618,lng = -35.889375)
 ```{r pressure, echo=FALSE}
 iso <- geojsonio::geojson_read("cg_map.geojson", what = "sp")
 
-pal=c('cyan','gold','tomato','red')
+pal=c('black','greenyellow','tomato')
 
 map <-leaflet(iso) %>%
     setView(lng = -35.889375, lat = -7.220618, zoom = 11) %>%
   addProviderTiles(providers$CartoDB.DarkMatter,
-                   options = providerTileOptions(opacity = 0.8))%>%  
+                   options = providerTileOptions(opacity = 0.8)) %>%  
   addPolygons(stroke = TRUE, weight=0.5,
               smoothFactor = 0.3, color="black",
               fillOpacity = 0.1,fillColor =pal ) %>%
-  addLegend(position="bottomleft",colors=rev(c("lightskyblue","greenyellow","gold","tomato")),
-            labels=rev(c("60 min","45 min",
-                     "30 min","15 min")),
+  addLegend(position="bottomleft",colors=rev(c('black','greenyellow','tomato')),
+            labels=rev(c("70 min", "60 min","30 min")),
             opacity = 0.6,
-            title="Travel Time with Public Transport")
+            title="Travel Time with Public Transport") %>%
+  addTiles()  # Add default OpenStreetMap map tiles
 
 map
 ```
 
+
+
 ```{r}
+# save map
+
+library(htmlwidgets)
+saveWidget(map, file="cg_times_bus_map.html")
 ```
 

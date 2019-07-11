@@ -32,8 +32,11 @@ max_match_diff = 1800
 def printUsage():
     print "Usage: " + sys.argv[0] + " <enhanced-buste-folder-path> <output-folder-path> <otp-server-url> <initial-date> <final-date>"
     
-def get_otp_itineraries(otp_url,o_lat,o_lon,d_lat,d_lon,date,time,route,verbose=False):
-    otp_http_request = 'routers/cg/plan?fromPlace={},{}&toPlace={},{}&mode=TRANSIT,WALK&date={}&time={}&numItineraries=10&maxWalkingDistance=1000'
+#http://localhost:5601/otp/routers/cg/plan?fromPlace=-7.287490,-35.895981&toPlace=-7.217167,-35.908995&mode=TRANSIT,WALK&date=05/13/2019&numItineraries=100&maxWalkingDistance=1000
+
+
+def get_otp_itineraries(otp_url,o_lat,o_lon,d_lat,d_lon,date,route,verbose=False):
+    otp_http_request = 'routers/cg/plan?fromPlace={},{}&toPlace={},{}&mode=TRANSIT,WALK&date={}&numItineraries=100&maxWalkingDistance=1000'
     
     otp_request_url = otp_url + otp_http_request.format(o_lat,o_lon,d_lat,d_lon,date,time,route)
 
@@ -55,7 +58,8 @@ def get_otp_suggested_trips(od_matrix,otp_url):
         start_time = (row['gps_datetime']-pd.Timedelta('2 min')).strftime('%H:%M:%S')
         req_start_time = time.time()
         #UFCG -7.217167, -35.908995
-        trip_plan = get_otp_itineraries(otp_url,row['shapeLat'], row['shapeLon'], '-7.217167', '-35.908995', '05-13-2019','09:00:00','')
+	#Hector 
+        trip_plan = get_otp_itineraries(otp_url,row['shapeLat'], row['shapeLon'], '-7.217167', '-35.908995', '05-13-2019','')
         print(trip_plan)
         req_end_time = time.time()
         req_time = req_end_time - req_start_time
@@ -88,8 +92,8 @@ def extract_otp_trips_legs(otp_trips):
                     trips_legs.append((date,trip,itinerary_id,leg_id,start_time,end_time,leg['mode'],route,fromStopId,toStopId, duration))
                     
                     leg_id += 1
-                    itinerary_id += 1
-                return trips_legs
+		itinerary_id += 1
+	return trips_legs
 
 def prepare_otp_legs_df(otp_legs_list):
     labels=['date','user_trip_id','itinerary_id','leg_id','otp_start_time','otp_end_time','mode','route','from_stop_id','to_stop_id','otp_duration_mins']
@@ -115,13 +119,13 @@ def prepare_otp_legs_df(otp_legs_list):
 #otp_server_url = sys.argv[3]
 
 
-user_trips_file = os.getcwd() + "/workspace/python/people-paths/trips-destination-inference/data/2019_05_13_user_trips_.csv"
+user_trips_file = os.getcwd() + "/workspace/python/people-paths/trips-destination-inference/data/input/2019_05_13_user_trips.csv"
 output_folder_path = os.getcwd() + "/workspace/python/people-paths/trips-destination-inference/data/output/" 
 otp_server_url = "http://localhost:5601/otp/"
 
 print "Processing file", user_trips_file
 file_name = user_trips_file.split('/')[-1].replace('.csv','')
-file_date = pd.to_datetime(file_name.split('_user_trips_')[0],format='%Y_%m_%d')
+file_date = pd.to_datetime(file_name.split('_user_trips')[0],format='%Y_%m_%d')
 if (file_date.dayofweek == 6):
     print "File date is sunday. File will not be processed."
 else:
@@ -129,13 +133,13 @@ else:
         user_trips = pd.read_csv(user_trips_file, low_memory=False)
         # Filtering just trips starting from Hector's home (bus stop)
         gps_trips = user_trips.loc[(user_trips['stopPointId'] == 491551)]
-        gps_trips = gps_trips.loc[(gps_trips['gps_datetime'] != '-')] 
+        gps_trips = gps_trips.loc[(gps_trips['gps_datetime'] != '-')]
         gps_trips['gps_datetime'] = pd.to_datetime(gps_trips['gps_datetime'], format='%d-%m-%Y %H:%M:%S')
         #print(gps_trips.head())
         otp_suggestions = get_otp_suggested_trips(gps_trips,otp_server_url)
         otp_legs_df = prepare_otp_legs_df(extract_otp_trips_legs(otp_suggestions))
-        
         otp_legs_df.to_csv(output_folder_path + '/' + file_name + '_otp_itineraries.csv',index=False)
+	print("Saving output.")
     except Exception as e:
         print e
         print "Error in processing file " + file_name

@@ -36,13 +36,13 @@ def select_input_files(enh_buste_base_path,init_date,fin_date,suffix):
         return sorted(selected_files)
 
 def get_router_id(query_date):
-    INTERMEDIATE_OTP_DATE = pd.to_datetime("2017-06-30", format="%Y-%m-%d")
+    INTERMEDIATE_OTP_DATE = pd.to_datetime("2019-05-13", format="%Y-%m-%d")
     router_id = ''
 
     if (query_date <= INTERMEDIATE_OTP_DATE):
-        return 'ctba-2017-1'
+        return 'campina-gtfs-2019'
     else:
-        return 'ctba-2017-2'
+        return 'campina-gtfs-2017'
 
 def prepare_otp_data(otp_data):
         #Fixing prefix
@@ -309,25 +309,25 @@ try:
         otp_suggestions_walk_legs = otp_suggestions[otp_suggestions['otp_mode'] == 'WALK']
 
 	# Read and Prepare Origin/Next-Origin Pairs data
-        trips_origins_filepath = user_trips_folderpath + os.sep + file_date_str + '_user_trips.csv'
-        trips_on_pairs_full = pd.read_csv(trips_origins_filepath,
-                                                parse_dates=['o_boarding_datetime','o_gps_datetime','next_o_boarding_datetime','next_o_gps_datetime'])
-        # Checking whether OTP and ticketing dates match
-        dates_compatibility, otp_date, ticketing_date = compatible_dates(otp_suggestions,trips_on_pairs_full)
-        if not dates_compatibility:
-                print "ERROR: OTP date", otp_date, "does not match Ticketing data", ticketing_date
-                print "Skipping current day"
-                exit(1)
+ #        trips_origins_filepath = user_trips_folderpath + os.sep + file_date_str + '_user_trips.csv'
+ #        trips_on_pairs_full = pd.read_csv(trips_origins_filepath,
+ #                                                parse_dates=['o_boarding_datetime','o_gps_datetime','next_o_boarding_datetime','next_o_gps_datetime'])
+ #        # Checking whether OTP and ticketing dates match
+ #        dates_compatibility, otp_date, ticketing_date = compatible_dates(otp_suggestions,trips_on_pairs_full)
+ #        if not dates_compatibility:
+ #                print "ERROR: OTP date", otp_date, "does not match Ticketing data", ticketing_date
+ #                print "Skipping current day"
+ #                exit(1)
         
-        trips_on_pairs = trips_on_pairs_full.filter(['o_boarding_id','next_o_boarding_id'])
-        trips_origins = trips_on_pairs_full.filter([col for col in trips_on_pairs_full.columns if col.startswith('o_')])	
+ #        trips_on_pairs = trips_on_pairs_full.filter(['o_boarding_id','next_o_boarding_id'])
+ #        trips_origins = trips_on_pairs_full.filter([col for col in trips_on_pairs_full.columns if col.startswith('o_')])	
 
-	# Filtering out non-vehicle-boarding itinerary suggestions
-	vehicle_boarding_trip_ids = trips_origins[np.logical_not(trips_origins['o_busCode'].str.isdigit())].o_boarding_id
+	# # Filtering out non-vehicle-boarding itinerary suggestions
+	# vehicle_boarding_trip_ids = trips_origins[np.logical_not(trips_origins['o_busCode'].str.isdigit())].o_boarding_id
 
-	otp_suggestions_vehicle = otp_suggestions[otp_suggestions['otp_user_trip_id'].isin(vehicle_boarding_trip_ids)]
-	otp_suggestions_bus_legs = otp_suggestions_vehicle[otp_suggestions_vehicle['otp_mode'] == 'BUS']
-	otp_suggestions_walk_legs = otp_suggestions_vehicle[otp_suggestions_vehicle['otp_mode'] == 'WALK']
+	# otp_suggestions_vehicle = otp_suggestions[otp_suggestions['otp_user_trip_id'].isin(vehicle_boarding_trip_ids)]
+	# otp_suggestions_bus_legs = otp_suggestions_vehicle[otp_suggestions_vehicle['otp_mode'] == 'BUS']
+	# otp_suggestions_walk_legs = otp_suggestions_vehicle[otp_suggestions_vehicle['otp_mode'] == 'WALK']
 
 	# Read and Prepare Bus Trips Data
         bus_trips_filepath = bus_trips_folderpath + os.sep + file_date_str + '_bus_trips.csv'

@@ -4,20 +4,33 @@ Repositório scripts python: https://github.com/analytics-ufcg/people-paths/tree
 
 ### Passo a passo:
 
-Rodar BULMA c/ dados de GPS e GTFS
-Rodar BUSTE c/ BULMA e GTFS
+1) Rodar BULMA/BUSTE c/ dados de GPS e GTFS
 
-Gerar dados de bilhetagem no formato de entrada do OTP com base em origens/destinos desejados
+2) Levantar o OTP numa máquina(Tutorial: https://docs.google.com/document/d/1aNDCTQR39KqB8Z_6V97sxKTwgpFfQocUsPcPVtS7u68/edit) usando o GTFS e um mapa de CG
 
-Usar dados de bilhetagem gerados para obter viagens programadas utilizando o OTP
+3) Rodar as queries to OTP utilizando esse script: get_otp_itineraries_cg.py
 
-Levantar o OTP numa máquina(Tutorial: https://docs.google.com/document/d/1aNDCTQR39KqB8Z_6V97sxKTwgpFfQocUsPcPVtS7u68/edit) usando o GTFS e um mapa de CG
-
-Rodar as queries to OTP utilizando esse script: https://github.com/analytics-ufcg/people-paths/blob/master/python/scripts/trips-destination-inference/get_otp_itineraries.py
-
-Inferir viagens realizadas a partir das programadas utilizando esse script: https://github.com/analytics-ufcg/people-paths/blob/master/python/scripts/trips-destination-inference/vehicle-otp-od-builder.py
+4) Inferir viagens realizadas a partir das programadas utilizando esse script: vehicle-otp-od-builder_cg.py
 
 Notebook com esse último passo para debug/teste:https://github.com/analytics-ufcg/people-paths/blob/master/python/notebooks/trips-destination-inference/otp-od-builder-test.ipynb
+
+### Exemplo de comandos
+
+- Levantar o serviço do OTP: 
+
+docker run -e JAVA_MX=2G -v <path>/otp/otp-graphs/graphs/:/data/ -p 5601:8080 goabout/opentripplanner otp --build /data/cg/
+
+- Gerar o grafo da cidade: 
+
+sudo docker run -e JAVA_MX=2G -v <path>/otp/otp-graphs/graphs/:/data/ -p 5601:8080 goabout/opentripplanner otp --autoScan --graphs /data --port 8080 --analyst
+
+- Recuperar os itinerários:
+
+python get_otp_itineraries_cg.python 
+
+- Casa os itinerários (saída anterior) com os dados de GPS:
+
+python vehicle_otp_od_builder_cg.py data/output/2019_05_13_user_trips_otp_itineraries.csv data/input data/input data/output
 
 
 ### Levantando OTP numa máquina

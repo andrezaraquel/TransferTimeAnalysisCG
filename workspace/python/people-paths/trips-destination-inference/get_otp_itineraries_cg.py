@@ -19,7 +19,7 @@ import pandas as pd
 import numpy as np
 
 #Constants
-MIN_NUM_ARGS = 4 _
+MIN_NUM_ARGS = 4
 first_cols = ['cardNum', 'boarding_datetime','gps_datetime','route','busCode','stopPointId']
 boarding_key_cols = ['cardNum','boarding_datetime']
 gps_key_cols = ['route','busCode','tripNum','stopPointId']
@@ -32,13 +32,13 @@ def printUsage():
     print "Usage: " + sys.argv[0] + " <enhanced-buste-folder-path> <output-folder-path> <otp-server-url> <initial-date> <final-date>"
     
 def get_otp_itineraries(otp_url,o_lat,o_lon,d_lat,d_lon,date,time,route,verbose=False):
-    otp_http_request = 'routers/{}/plan?fromPlace={},{}&toPlace={},{}&mode=TRANSIT,WALK&date={}&time={}&numItineraries=10&maxWalkingDistance=1000'
+    otp_http_request = 'routers/cg/plan?fromPlace={},{}&toPlace={},{}&mode=TRANSIT,WALK&date={}&time={}&numItineraries=100&maxWalkingDistance=1000'
     
-    otp_request_url = otp_url + otp_http_request.format(o_lat,o_lon,d_lat,d_lon,date,time,route)
+    otp_request_url = otp_url + otp_http_request.format(o_lat,o_lon,d_lat,d_lon,date.strip(),time,route)
 
     if verbose:
         print otp_request_url
-    print(otp_request_url)
+
     return json.loads(urllib2.urlopen(otp_request_url).read())
 
 def get_otp_suggested_trips(od_matrix,otp_url):
@@ -47,16 +47,15 @@ def get_otp_suggested_trips(od_matrix,otp_url):
     trips_otp_response = {}
     counter = 0
     for index, row in od_matrix.iterrows():
-        print("entrou nesse loop")
         id=float(row['stopPointId'])
         date = row['gps_datetime'].strftime('%Y-%m-%d ')
-        start_time = (row['gps_datetime']-pd.Timedelta('2 min')).strftime('%H:%M:%S')
+        
+        start_time = (row['gps_datetime']-pd.Timedelta('3 h')-pd.Timedelta('2 min')).strftime('%H:%M:%S')
+        
         req_start_time = time.time()
         #UFCG -7.217167, -35.908995
-        print("vai entrar no ponto critico")
         trip_plan = get_otp_itineraries(otp_url,row['shapeLat'], row['shapeLon'], '-7.217167', '-35.908995', date,start_time, row['route'])
-        print("PAssou do ponto critico")
-        print(trip_plan)
+        # print(trip_plan)
         req_end_time = time.time()
         req_time = req_end_time - req_start_time
         req_duration.append((id,req_time))
@@ -115,13 +114,13 @@ def prepare_otp_legs_df(otp_legs_list):
 #otp_server_url = sys.argv[3]
 
 
-user_trips_file = os.getcwd() + "/workspace/python/people-paths/trips-destination-inference/data/2019_05_13_user_trips_.csv"
-output_folder_path = os.getcwd() + "/workspace/python/people-paths/trips-destination-inference/data/output/" 
+user_trips_file = os.getcwd() + "/data/input/2019_05_13_bus_trips.csv"
+output_folder_path = os.getcwd() + "/data/output/" 
 otp_server_url = "http://localhost:5601/otp/"
 
 print "Processing file", user_trips_file
 file_name = user_trips_file.split('/')[-1].replace('.csv','')
-file_date = pd.to_datetime(file_name.split('_user_trips_')[0],format='%Y_%m_%d')
+file_date = pd.to_datetime(file_name.split('_bus_trips')[0],format='%Y_%m_%d')
 if (file_date.dayofweek == 6):
     print "File date is sunday. File will not be processed."
 else:

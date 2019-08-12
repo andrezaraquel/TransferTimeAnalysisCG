@@ -352,19 +352,23 @@ try:
                             .filter(['otp_user_trip_id','otp_itinerary_id','otp_leg_id','otp_mode','otp_route',
                                      'bt_bus_code','bt_trip_num','otp_from_stop_id','otp_start_time',
                                      'bt_start_time','sched_obs_start_timediff','otp_to_stop_id',
-                                     'otp_end_time','bt_end_time','sched_obs_end_timediff','otp_duration_mins']) \
+                                     'otp_end_time','bt_end_time','sched_obs_end_timediff','otp_duration_mins','minimun_obs_start_time']) \
                             .sort_values(['otp_user_trip_id','otp_itinerary_id','otp_leg_id'])
 
-	output_bulma_otp = scheduled_itin_observed_od_full_clean.groupby(['otp_itinerary_id', 'otp_leg_id']).apply(lambda x: x.sort_values(["sched_obs_start_timediff"]))
+	scheduled_itin_observed_od_full_clean \
+                        .groupby(['otp_itinerary_id', 'otp_leg_id']) \
+                        .apply(lambda x: x.sort_values(["sched_obs_start_timediff"]))
+    
+    
+    
+	output_bulma_otp = scheduled_itin_observed_od_full_clean.sort_values(['otp_itinerary_id', 'otp_leg_id']).drop_duplicates(subset=['otp_itinerary_id','otp_leg_id'])
+	# Verificar horarios do segundo onibus, estao com muitas horas de atrasp
+    # Verificar o horario do otp do segundo onibus pra comecar depois que o primeiro onibus chegar na integracao
+    # verificar se a troca do primeiro onibus pro segundo onibus eh menor que 70 minutos
+    # 
 	
-	print("----------------------------------------------------------")
-	# Para cada leg de cada itinerario, pegar apenas a viagem de onibus com menor diferenca de tempo
-	# agrupa por itinerario eleg
-	# ordena pelo sched obs start timediff
-	# TODO[pega o primeiro para cada leg]
-
+	
 	output_bulma_otp.to_csv("data/output/output_bulma_otp.csv",index=False)
-
 
 	print "Processing time:", time.time() - exec_start_time, "s"
 

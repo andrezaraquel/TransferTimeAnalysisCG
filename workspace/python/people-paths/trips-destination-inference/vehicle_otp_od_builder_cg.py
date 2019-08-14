@@ -359,13 +359,11 @@ try:
                         .groupby(['otp_itinerary_id', 'otp_leg_id']) \
                         .apply(lambda x: x.sort_values(["sched_obs_start_timediff"]))
     
-    
-    
-	output_bulma_otp = scheduled_itin_observed_od_full_clean.sort_values(['otp_itinerary_id', 'otp_leg_id']).drop_duplicates(subset=['otp_itinerary_id','otp_leg_id'])
-	# Verificar horarios do segundo onibus, estao com muitas horas de atrasp
-    # Verificar o horario do otp do segundo onibus pra comecar depois que o primeiro onibus chegar na integracao
-    # verificar se a troca do primeiro onibus pro segundo onibus eh menor que 70 minutos
-    # 
+    output_bulma_otp = scheduled_itin_observed_od_full_clean.drop_duplicates(subset=['otp_itinerary_id','otp_leg_id'])
+	# Verificar a saída do otp do segundo ônibus sem rota
+    # Garantir que o segundo ônibus só passa depois do desembarque do primeiro
+    # Verificar horarios do segundo onibus, estao com muitas horas de atraso (GTFS?)
+    # Verificar se a troca do primeiro onibus pro segundo onibus eh menor que 70 minutos
 	
 	
 	output_bulma_otp.to_csv("data/output/output_bulma_otp.csv",index=False)

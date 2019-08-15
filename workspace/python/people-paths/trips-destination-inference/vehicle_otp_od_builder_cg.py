@@ -365,7 +365,7 @@ try:
 	
 	
 	output_bulma_otp.to_csv("data/output/output_bulma_otp.csv",index=False)
-    # Garantir que o segundo ônibus só passa depois do desembarque do primeiro
+    # Garantir que o segundo onibus so passa depois do desembarque do primeiro
     # Verificar horarios do segundo onibus, estao com muitas horas de atraso (GTFS?)
     # Verificar se a troca do primeiro onibus pro segundo onibus eh menor que 70 minutos
 

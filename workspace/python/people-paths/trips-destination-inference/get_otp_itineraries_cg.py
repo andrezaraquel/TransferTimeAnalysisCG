@@ -95,7 +95,7 @@ def prepare_otp_legs_df(otp_legs_list):
     return pd.DataFrame.from_records(data=otp_legs_list, columns=labels) \
                     .assign(date = lambda x: pd.to_datetime(x['date'],unit='s').dt.strftime('%Y-%m-%d'),
                             otp_duration_mins = lambda x : (x['otp_end_time'] - x['otp_start_time'])/60,
-                            route = lambda x : pd.to_numeric(x['route'],errors='coerce'),
+                            route = lambda x : (x['route']),
                             from_stop_id = lambda x : pd.to_numeric(x['from_stop_id'],errors='coerce'),
                             to_stop_id = lambda x : pd.to_numeric(x['to_stop_id'],errors='coerce')) \
                     .assign(otp_start_time = lambda x : pd.to_datetime(x['otp_start_time'], unit='s'),

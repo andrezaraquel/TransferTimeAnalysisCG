@@ -30,7 +30,7 @@ python get_otp_itineraries_cg.python
 
 - Casa os itinerários (saída anterior) com os dados de GPS:
 
-python vehicle_otp_od_builder_cg.py data/output/2019_05_13_user_trips_otp_itineraries.csv data/input data/input data/output
+python vehicle_otp_od_builder_cg.py data/output/2019_05_13_bus_trips_otp_itineraries.csv data/input data/input data/output
 
 
 ### Levantando OTP numa máquina

@@ -32,9 +32,10 @@ def printUsage():
     print "Usage: " + sys.argv[0] + " <enhanced-buste-folder-path> <output-folder-path> <otp-server-url> <initial-date> <final-date>"
     
 def get_otp_itineraries(otp_url,o_lat,o_lon,d_lat,d_lon,date,time,route,verbose=False):
-    otp_http_request = 'routers/cg/plan?fromPlace={},{}&toPlace={},{}&mode=TRANSIT,WALK&date={}&time={}&numItineraries=100&maxWalkingDistance=1000'
+    otp_http_request = 'routers/cg/plan?fromPlace={},{}&toPlace={},{}&mode=TRANSIT,WALK&date={}&time={}&numItineraries=500&maxWalkingDistance=1000'
     
     otp_request_url = otp_url + otp_http_request.format(o_lat,o_lon,d_lat,d_lon,date.strip(),time,route)
+    print(otp_request_url)
 
     if verbose:
         print otp_request_url

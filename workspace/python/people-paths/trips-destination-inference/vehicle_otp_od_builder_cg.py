@@ -358,14 +358,51 @@ try:
 	scheduled_itin_observed_od_full_clean \
                         .groupby(['otp_itinerary_id', 'otp_leg_id']) \
                         .apply(lambda x: x.sort_values(["sched_obs_start_timediff"]))
-    
-    
-	output_bulma_otp = scheduled_itin_observed_od_full_clean.drop_duplicates(subset=['otp_itinerary_id','otp_leg_id'])
+                        
+    # Filtering out itineraries which lost bus legs along the processing
+	original_suggested_itins_num_legs = otp_suggestions.groupby(['otp_user_trip_id','otp_itinerary_id']) \
+                                    .agg({'otp_leg_id': lambda x: len(x)}) \
+                                    .reset_index() \
+                                    .rename(index=str, columns={'otp_leg_id':'num_legs'})
+
+	curr_matched_itins_num_legs = scheduled_itin_observed_od_full_clean.groupby(['otp_user_trip_id','otp_itinerary_id']) \
+                                    .agg({'otp_leg_id': lambda x: len(np.unique(x))}) \
+                                    .reset_index() \
+                                    .rename(index=str, columns={'otp_leg_id':'num_legs'})
+
+	complete_matched_itins = original_suggested_itins_num_legs.merge(curr_matched_itins_num_legs, how='inner')
+	
+	all_complete_vehicle_legs_options = scheduled_itin_observed_od_full_clean.merge(complete_matched_itins.drop('num_legs', axis=1), how='inner')
+
+	# Choose best actual leg matches (based on feasibility and start time)
+	feasible_legs = choose_leg_matches(scheduled_itin_observed_od_full_clean.groupby(['otp_user_trip_id','otp_itinerary_id','otp_leg_id']))
+	
+	if len(feasible_legs) == 0:
+            print "No matches left after matching and selecting feasible bus legs."
+            print "Skipping next steps..."
+            exit(0)
+
+	# Filtering out itineraries which lost bus legs after feasible legs choice processing
+	feasible_itins_num_legs = feasible_legs.groupby(['otp_user_trip_id','otp_itinerary_id']) \
+                                    .agg({'otp_leg_id': lambda x: len(x)}) \
+                                    .reset_index() \
+                                    .rename(index=str, columns={'otp_leg_id':'num_legs'})
+
+	feasible_complete_itins = feasible_itins_num_legs.merge(original_suggested_itins_num_legs,how='inner')
+
+	feasible_complete_itins_legs = feasible_legs.merge(feasible_complete_itins.drop('num_legs', axis=1),how='inner')
+	
+	# Perform an endogenous validation using location and time features
+	# Add stops data to legs
+	stops_locations = stops_df[['stop_id','stop_lat','stop_lon']]
+	itineraries_legs = add_stops_data_to_legs(feasible_complete_itins_legs,stops_locations)
+	
+	output_bulma_otp = feasible_complete_itins_legs#.drop_duplicates(subset=['otp_itinerary_id','otp_leg_id'])
    
 	
 	
 	output_bulma_otp.to_csv("data/output/output_bulma_otp.csv",index=False)
-    # Garantir que o segundo ônibus só passa depois do desembarque do primeiro
+    # Garantir que o segundo onibus so passa depois do desembarque do primeiro
     # Verificar horarios do segundo onibus, estao com muitas horas de atraso (GTFS?)
     # Verificar se a troca do primeiro onibus pro segundo onibus eh menor que 70 minutos
 

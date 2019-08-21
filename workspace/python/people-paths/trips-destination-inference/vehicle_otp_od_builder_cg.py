@@ -358,8 +358,10 @@ try:
 	scheduled_itin_observed_od_full_clean \
                         .groupby(['otp_itinerary_id', 'otp_leg_id']) \
                         .apply(lambda x: x.sort_values(["sched_obs_start_timediff"]))
-                        
-    # Filtering out itineraries which lost bus legs along the processing
+
+	# output_bulma_otp = scheduled_itin_observed_od_full_clean.drop_duplicates(subset=['otp_itinerary_id','otp_leg_id'])
+
+ #    # Filtering out itineraries which lost bus legs along the processing
 	original_suggested_itins_num_legs = otp_suggestions.groupby(['otp_user_trip_id','otp_itinerary_id']) \
                                     .agg({'otp_leg_id': lambda x: len(x)}) \
                                     .reset_index() \
@@ -400,10 +402,8 @@ try:
 	output_bulma_otp = feasible_complete_itins_legs#.drop_duplicates(subset=['otp_itinerary_id','otp_leg_id'])
    
 	
-	
 	output_bulma_otp.to_csv("data/output/output_bulma_otp.csv",index=False)
     # Garantir que o segundo onibus so passa depois do desembarque do primeiro
-    # Verificar horarios do segundo onibus, estao com muitas horas de atraso (GTFS?)
     # Verificar se a troca do primeiro onibus pro segundo onibus eh menor que 70 minutos
 
 	print "Processing time:", time.time() - exec_start_time, "s"

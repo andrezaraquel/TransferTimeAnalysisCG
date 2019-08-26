@@ -332,7 +332,8 @@ try:
                                                             'bt_busCode':'bt_bus_code'}) \
                                 .assign(sched_obs_start_timediff = 
                                         lambda x: np.absolute(x['bt_start_time'] - x['otp_start_time']))
-
+	
+	scheduled_itin_observed_o = scheduled_itin_observed_o[(scheduled_itin_observed_o.otp_mode == "BUS") & (scheduled_itin_observed_o.sched_obs_start_timediff >= pd.Timedelta('0s'))  & (scheduled_itin_observed_o.sched_obs_start_timediff < pd.Timedelta('1.5h'))]
 	scheduled_itin_observed_od = scheduled_itin_observed_o.merge(bus_trips_clean.add_prefix('bt_'),
                                 left_on=['otp_route','bt_bus_code','bt_trip_num','otp_to_stop_id'],
                                 right_on=['bt_route','bt_busCode','bt_tripNum','bt_stopPointId'],
@@ -359,8 +360,9 @@ try:
                         .groupby(['otp_itinerary_id', 'otp_leg_id']) \
                         .apply(lambda x: x.sort_values(["sched_obs_start_timediff"]))
 
-	# output_bulma_otp = scheduled_itin_observed_od_full_clean.drop_duplicates(subset=['otp_itinerary_id','otp_leg_id'])
-
+	#alfa = scheduled_itin_observed_od_full_clean[(scheduled_itin_observed_od_full_clean['sched_obs_end_timediff']< pd.Timedelta('1.5h'))]
+	#print(scheduled_itin_observed_od_full_clean[((scheduled_itin_observed_od_full_clean['sched_obs_start_timediff']  >= pd.Timedelta('0s')) & (scheduled_itin_observed_od_full_clean['sched_obs_end_timediff']< pd.Timedelta('1.5h')))])
+	#print(scheduled_itin_observed_od_full_clean['sched_obs_start_timediff'].head(100))
  #    # Filtering out itineraries which lost bus legs along the processing
 	original_suggested_itins_num_legs = otp_suggestions.groupby(['otp_user_trip_id','otp_itinerary_id']) \
                                     .agg({'otp_leg_id': lambda x: len(x)}) \

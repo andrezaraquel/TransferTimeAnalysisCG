@@ -353,7 +353,7 @@ try:
                             .filter(['otp_user_trip_id','otp_itinerary_id','otp_leg_id','otp_mode','otp_route',
                                      'bt_bus_code','bt_trip_num','otp_from_stop_id','otp_start_time',
                                      'bt_start_time','sched_obs_start_timediff','otp_to_stop_id',
-                                     'otp_end_time','bt_end_time','sched_obs_end_timediff','otp_duration_mins','minimun_obs_start_time']) \
+                                     'otp_end_time','bt_end_time','sched_obs_end_timediff','otp_duration_mins','minimun_obs_start_time', 'bt_duration_mins']) \
                             .sort_values(['otp_user_trip_id','otp_itinerary_id','otp_leg_id'])
 
 	scheduled_itin_observed_od_full_clean \

@@ -16,13 +16,17 @@ Notebook com esse último passo para debug/teste:https://github.com/analytics-uf
 
 ### Exemplo de comandos
 
-- Levantar o serviço do OTP: 
+- Em graphs/, levantar o serviço do OTP: 
 
-docker run -e JAVA_MX=2G -v <path>/otp/otp-graphs/graphs/:/data/ -p 5601:8080 goabout/opentripplanner otp --build /data/cg/
+docker run -e JAVA_MX=2G -v /home/veruska/Documentos/Mestrado/otp/otp-graphs/graphs/:/data/ -p 5601:8080 goabout/opentripplanner otp --build /data/cg/
+
+--docker run -e JAVA_MX=2G -v <path>/otp/otp-graphs/graphs/:/data/ -p 5601:8080 goabout/opentripplanner otp --build /data/cg/
 
 - Gerar o grafo da cidade: 
 
-sudo docker run -e JAVA_MX=2G -v <path>/otp/otp-graphs/graphs/:/data/ -p 5601:8080 goabout/opentripplanner otp --autoScan --graphs /data --port 8080 --analyst
+sudo docker run -e JAVA_MX=2G -v /home/veruska/Documentos/Mestrado/otp/otp-graphs/graphs/:/data/ -p 5601:8080 goabout/opentripplanner otp --autoScan --graphs /data --port 8080 --analyst
+
+--sudo docker run -e JAVA_MX=2G -v <path>/otp/otp-graphs/graphs/:/data/ -p 5601:8080 goabout/opentripplanner otp --autoScan --graphs /data --port 8080 --analyst
 
 - Recuperar os itinerários:
 
@@ -53,9 +57,10 @@ docker run -e JAVA_MX=2G -v /local/tarciso/otp/graphs/:/data -p 5601:8080 goabou
 
 Sample API Calls:
 
+http://localhost:5601/otp/routers/cg/plan?fromPlace=-7.28659,-35.89567&toPlace=-7.217167,-35.908995&mode=TRANSIT,WALK&date=2019-05-13&time=08:52:42&numItineraries=10&maxWalkingDistance=1000
+
 150.165.85.4:10402/otp/routers/ctba/plan?fromPlace=-25.39211,-49.22613&toPlace=-25.45102,-49.28381&mode=TRANSIT,WALK&date=04/03/2017&time=16:20:00
 
 http://150.165.85.4:10402/otp/routers/cg/plan?fromPlace=-7.2090842,-35.900876&toPlace=-7.2194726,-35.8774872&mode=TRANSIT,WALK&date=04/03/2017&time=16:20:00
 
-localhost:5601/otp/routers/cg/plan?fromPlace=-7.287365,-35.894520&toPlace=-7.217147,-35.909744&mode=TRANSIT,WALK&date=14/05/2019&time=16:20:00
 

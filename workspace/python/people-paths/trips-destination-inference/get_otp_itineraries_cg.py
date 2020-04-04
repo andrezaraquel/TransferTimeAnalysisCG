@@ -134,8 +134,12 @@ else:
         #print(gps_trips.head())
         otp_suggestions = get_otp_suggested_trips(gps_trips,otp_server_url)
         otp_legs_df = prepare_otp_legs_df(extract_otp_trips_legs(otp_suggestions))
+        print("vai dropar os duplicates")
+        otp_legs_df.drop_duplicates(subset=['date','user_trip_id','leg_id','otp_end_time','mode', 'route','otp_duration_mins', 'from_stop_id', 'to_stop_id'], inplace=True)
+        print("dropou os duplicates")
+
         
-        otp_legs_df.to_csv(output_folder_path + '/' + file_name + '_otp_itineraries.csv',index=False)
+        otp_legs_df.to_csv(output_folder_path + '/' + file_name + '_otp_itineraries_drop_duplicates.csv',index=False)
     except Exception as e:
         print e
         print "Error in processing file " + file_name

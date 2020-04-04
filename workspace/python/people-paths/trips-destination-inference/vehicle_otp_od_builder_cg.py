@@ -191,69 +191,6 @@ def add_stops_data_to_legs(itineraries_legs,stops_locs):
                                                                                 .rename(index=str, columns={'stop_lat':'to_stop_lat','stop_lon':'to_stop_lon'}) 
     return itineraries_legs_stops
 
-def build_candidate_itineraries_df(chosen_leg_matches_data):
-        itins_bus_info = chosen_leg_matches_data \
-                                        .query('otp_mode == \'BUS\'') \
-                                        .groupby(['card_num','trip_id','otp_itinerary_id']) \
-                                        .agg({'otp_from_stop_id': lambda x: x.iloc[0],
-                                              'from_stop_lat': lambda x: x.iloc[0],
-                                              'from_stop_lon': lambda x: x.iloc[0],
-                                              'otp_to_stop_id': lambda x: x.iloc[-1],
-                                              'to_stop_lat': lambda x: x.iloc[-1],
-                                              'to_stop_lon': lambda x: x.iloc[-1],
-                                              'otp_mode': lambda x: len(x)}) \
-                                        .reset_index() \
-                                        .rename(index=str, columns={'otp_mode':'num_transfers',
-                                                                    'otp_from_stop_id':'from_stop_id',
-                                                                    'otp_to_stop_id':'to_stop_id'})
-        itins_time_info = chosen_leg_matches_data \
-                                        .groupby(['card_num','trip_id','otp_itinerary_id']) \
-                                        .agg({'bt_start_time': lambda x: x.iloc[0],
-                                              'bt_end_time': lambda x: x.iloc[-1],
-                                              'otp_start_time': lambda x: x.iloc[0],
-                                              'otp_end_time': lambda x: x.iloc[-1],
-                                              'date': lambda x: x.iloc[0]}) \
-                                        .reset_index() \
-                                        .rename(index=str, columns={'otp_start_time':'sch_start_time',
-                                                                    'otp_end_time':'sch_end_time',
-                                                                    'bt_start_time':'obs_start_time',
-                                                                    'bt_end_time':'obs_end_time'}) 
-        
-        otp_buste_itineraries = itins_bus_info.merge(itins_time_info) \
-                                        .reindex(['date','card_num','trip_id','otp_itinerary_id',
-                                                  'from_stop_id','sch_start_time','obs_start_time',
-                                                  'from_stop_lat','from_stop_lon','to_stop_id',
-                                                  'sch_end_time','obs_end_time','to_stop_lat',
-                                                  'to_stop_lon','num_transfers'], axis=1, copy=False)\
-                                        .assign(card_num = lambda x: x['card_num'].astype(float),
-                                                trip_id = lambda x: x['trip_id'].astype(float),
-                                                otp_itinerary_id = lambda x: x['otp_itinerary_id'].astype(float))
-        return otp_buste_itineraries
-
-
-def dist(p1_lat, p1_lon, p2_lat, p2_lon):
-    if(np.isnan([p1_lat, p1_lon, p2_lat, p2_lon]).any()):
-        return -1
-    else:
-        return np.around(distance.geodesic((p1_lat,p1_lon),(p2_lat,p2_lon)).km,decimals=5)
-
-def get_candidate_itineraries_summary(candidate_itineraries,trips_validation):
-        otp_buste_itineraries_summary = candidate_itineraries \
-                                        .merge(trips_validation,how='inner') \
-                                        .assign(start_diff = lambda x: np.absolute(x['obs_start_time'] - x['o_boarding_datetime']),
-                                                origin_dist = lambda y: y.apply(lambda x: dist(x['from_stop_lat'], x['from_stop_lon'], x['o_stop_lat'], x['o_stop_lon']),axis=1),
-                                                next_origin_dist = lambda y: y.apply(lambda x: dist(x['to_stop_lat'], x['to_stop_lon'], x['next_o_stop_lat'], x['next_o_stop_lon']),axis=1),
-                                                next_start_diff = lambda x: np.absolute(x['next_o_boarding_datetime'] - x['obs_end_time']),
-                                                sch_duration_mins = lambda x: 
-                                                (x.sch_end_time - x.sch_start_time)/pd.Timedelta('1m'),
-                                                obs_duration_mins = lambda x:
-                                                (x.obs_end_time - x.obs_start_time)/pd.Timedelta('1m')) \
-                                        .sort_values(['card_num','trip_id'])
-        return otp_buste_itineraries_summary
-
-
-
-
 #Main
 if __name__ == "__main__":
     if len(sys.argv) < MIN_NUM_ARGS:
@@ -401,12 +338,17 @@ try:
 	stops_locations = stops_df[['stop_id','stop_lat','stop_lon']]
 	itineraries_legs = add_stops_data_to_legs(feasible_complete_itins_legs,stops_locations)
 	
-	output_bulma_otp = feasible_complete_itins_legs#.drop_duplicates(subset=['otp_itinerary_id','otp_leg_id'])
+	# Removes itineraries that have repeated information 
+	itineraries_legs_duplicates_dropped = itineraries_legs #feasible_complete_itins_legs.drop_duplicates(keep='first',subset=['otp_mode','otp_route','bt_bus_code','bt_trip_num', 'otp_from_stop_id','otp_start_time','bt_start_time',
+                #'sched_obs_start_timediff','otp_to_stop_id','otp_end_time','bt_end_time','sched_obs_end_timediff','otp_duration_mins','bt_duration_mins'])
+
    
 	
-	output_bulma_otp.to_csv("data/output/output_bulma_otp.csv",index=False)
-    # Garantir que o segundo onibus so passa depois do desembarque do primeiro
-    # Verificar se a troca do primeiro onibus pro segundo onibus eh menor que 70 minutos
+	itineraries_legs_duplicates_dropped = itineraries_legs_duplicates_dropped[~itineraries_legs_duplicates_dropped.duplicated(['otp_leg_id','otp_mode','otp_route','bt_bus_code','bt_trip_num', 'otp_from_stop_id','otp_start_time','bt_start_time','sched_obs_start_timediff','otp_to_stop_id','otp_end_time','bt_end_time','sched_obs_end_timediff']).groupby(itineraries_legs_duplicates_dropped['otp_itinerary_id']).transform('any')]
+	
+	# Filters itineraries whose routes have lost legs 
+	output_bulma_otp = itineraries_legs_duplicates_dropped.groupby(['otp_user_trip_id','otp_itinerary_id']).filter(lambda x: len(x.otp_leg_id) == 5)
+	output_bulma_otp.to_csv("data/output/output_bulma_otp_2.csv",index=False)
 
 	print "Processing time:", time.time() - exec_start_time, "s"
 

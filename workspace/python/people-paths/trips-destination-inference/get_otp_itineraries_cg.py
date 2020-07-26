@@ -6,7 +6,7 @@ import os
 import glob
 from datetime import datetime
 import json
-import urllib2
+import urllib.request
 import time
 import os
 import requests
@@ -29,7 +29,7 @@ max_match_diff = 1800
 
 #Functions
 def printUsage():
-    print "Usage: " + sys.argv[0] + " <enhanced-buste-folder-path> <output-folder-path> <otp-server-url> <initial-date> <final-date>"
+    print ("Usage: " + sys.argv[0] + " <enhanced-buste-folder-path> <output-folder-path> <otp-server-url> <initial-date> <final-date>")
     
 def get_otp_itineraries(otp_url,o_lat,o_lon,d_lat,d_lon,date,time,route,verbose=False):
     otp_http_request = 'routers/cg/plan?fromPlace={},{}&toPlace={},{}&mode=TRANSIT,WALK&date={}&time={}&numItineraries=500&maxWalkingDistance=1000'
@@ -38,9 +38,9 @@ def get_otp_itineraries(otp_url,o_lat,o_lon,d_lat,d_lon,date,time,route,verbose=
     print(otp_request_url)
 
     if verbose:
-        print otp_request_url
+        print (otp_request_url)
 
-    return json.loads(urllib2.urlopen(otp_request_url).read())
+    return json.loads(urllib.request.urlopen(otp_request_url).read())
 
 def get_otp_suggested_trips(od_matrix,otp_url):
     
@@ -65,7 +65,7 @@ def get_otp_suggested_trips(od_matrix,otp_url):
         counter+=1
 
         req_dur_df = pd.DataFrame().from_records(req_duration,columns=['id','duration'])
-    print req_dur_df.duration.describe()	
+    print (req_dur_df.duration.describe())	
 
     return trips_otp_response
 
@@ -119,11 +119,11 @@ user_trips_file = os.getcwd() + "/data/input/2019_05_13_bus_trips.csv"
 output_folder_path = os.getcwd() + "/data/output/" 
 otp_server_url = "http://localhost:5601/otp/"
 
-print "Processing file", user_trips_file
+print ("Processing file", user_trips_file)
 file_name = user_trips_file.split('/')[-1].replace('.csv','')
 file_date = pd.to_datetime(file_name.split('_bus_trips')[0],format='%Y_%m_%d')
 if (file_date.dayofweek == 6):
-    print "File date is sunday. File will not be processed."
+    print ("File date is sunday. File will not be processed.")
 else:
     try:
         user_trips = pd.read_csv(user_trips_file, low_memory=False)
@@ -134,14 +134,12 @@ else:
         #print(gps_trips.head())
         otp_suggestions = get_otp_suggested_trips(gps_trips,otp_server_url)
         otp_legs_df = prepare_otp_legs_df(extract_otp_trips_legs(otp_suggestions))
-        print("vai dropar os duplicates")
         otp_legs_df.drop_duplicates(subset=['date','user_trip_id','leg_id','otp_end_time','mode', 'route','otp_duration_mins', 'from_stop_id', 'to_stop_id'], inplace=True)
-        print("dropou os duplicates")
 
         
-        otp_legs_df.to_csv(output_folder_path + '/' + file_name + '_otp_itineraries_drop_duplicates.csv',index=False)
+        otp_legs_df.to_csv(output_folder_path + '/' + file_name + '_otp_itineraries.csv',index=False)
     except Exception as e:
-        print e
-        print "Error in processing file " + file_name
+        print (e)
+        print ("Error in processing file " + file_name)
 
 

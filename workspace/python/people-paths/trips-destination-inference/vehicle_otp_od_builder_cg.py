@@ -19,7 +19,7 @@ MIN_NUM_ARGS = 5
 
 #Functions
 def printUsage():
-    print "Usage: " + sys.argv[0] + " <otp-suggestions-filepath> <bus-trips-folderpath> <gtfs-base-folderpath> <output-folderpath>"
+    print ("Usage: " + sys.argv[0] + " <otp-suggestions-filepath> <bus-trips-folderpath> <gtfs-base-folderpath> <output-folderpath>")
 
 def select_input_files(enh_buste_base_path,init_date,fin_date,suffix):
         selected_files = []
@@ -194,7 +194,7 @@ def add_stops_data_to_legs(itineraries_legs,stops_locs):
 #Main
 if __name__ == "__main__":
     if len(sys.argv) < MIN_NUM_ARGS:
-        print "Error: Wrong Usage!"
+        print ("Error: Wrong Usage!")
         printUsage()
         sys.exit(1)
 
@@ -205,7 +205,7 @@ output_folderpath = sys.argv[4]
 
 file_date_str = otp_suggestions_filepath.split('/')[-1].split('_bus_trips_')[0]
 file_date = pd.to_datetime(file_date_str,format='%Y_%m_%d')
-print "Processing File:", otp_suggestions_filepath
+print ("Processing File:", otp_suggestions_filepath)
 
 try:
 
@@ -217,8 +217,8 @@ try:
 	otp_suggestions_raw = pd.read_csv(otp_suggestions_filepath, parse_dates=['date','otp_start_time','otp_end_time'])
 
         if len(otp_suggestions_raw) == 0:
-            print "Zero OTP suggestions found."
-            print "Skipping next steps..."
+            print ("Zero OTP suggestions found.")
+            print ("Skipping next steps...")
             exit(0)
 
 	        # Prepare OTP data for analysis
@@ -319,8 +319,8 @@ try:
 	feasible_legs = choose_leg_matches(scheduled_itin_observed_od_full_clean.groupby(['otp_user_trip_id','otp_itinerary_id','otp_leg_id']))
 	
 	if len(feasible_legs) == 0:
-            print "No matches left after matching and selecting feasible bus legs."
-            print "Skipping next steps..."
+            print ("No matches left after matching and selecting feasible bus legs.")
+            print ("Skipping next steps...")
             exit(0)
 
 	# Filtering out itineraries which lost bus legs after feasible legs choice processing
@@ -348,10 +348,10 @@ try:
 	
 	# Filters itineraries whose routes have lost legs 
 	output_bulma_otp = itineraries_legs_duplicates_dropped.groupby(['otp_user_trip_id','otp_itinerary_id']).filter(lambda x: len(x.otp_leg_id) == 5)
-	output_bulma_otp.to_csv("data/output/output_bulma_otp_2.csv",index=False)
+	output_bulma_otp.to_csv("data/output/output_bulma_otp_2019_02_01.csv",index=False)
 
-	print "Processing time:", time.time() - exec_start_time, "s"
+	print ("Processing time:", time.time() - exec_start_time, "s")
 
 except Exception:
-	print "Error in processing file " + otp_suggestions_filepath
+	print ("Error in processing file " + otp_suggestions_filepath)
 	traceback.print_exc(file=sys.stdout)

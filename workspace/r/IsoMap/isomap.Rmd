@@ -41,8 +41,8 @@ current <- GET(
     fromPlace = paste(fromLat, fromLng,sep = ","), # latlong of place
     toPlace = paste(toLat, toLng,sep = ","), # latlong of place
     mode = "TRANSIT,WALK", # modes we want the route planner to use
-    date = "04/04/2017",
-    time= "07:00:00",
+    date = "05/13/2019",
+    time= "12:00:00",
     maxWalkDistance = 1600, # in metres
     walkReluctance = 5,
     minTransferTime = 60, # in secs
@@ -60,9 +60,10 @@ write(current, file = "cg_map.geojson")
 # -7.216598, -35.916106 - ufcg
 # -7.253764, -35.887224 - tambor
 # -7.305623, -35.780192 - galante
-# -7.182618, -35.977059 - são josé da mata
+# -7.182352, -35.984409 - são josé da mata
+# -7.287307, -35.895852 - Hector's house
 
-get_geojson(fromLat = -7.253764, fromLng = -35.887224, #tambor
+get_geojson(fromLat = -7.192817, fromLng = -35.880604, #tambor
             toLat = -7.220618,toLng = -35.889375) #integração
 
 ```

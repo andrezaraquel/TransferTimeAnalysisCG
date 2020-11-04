@@ -217,7 +217,7 @@ try:
 	otp_suggestions_raw = pd.read_csv(otp_suggestions_filepath, parse_dates=['date','otp_start_time','otp_end_time'])
 
         if len(otp_suggestions_raw) == 0:
-            print ("Zero OTP suggestions found.")
+            zprint ("Zero OTP suggestions found.")
             print ("Skipping next steps...")
             exit(0)
 
@@ -268,7 +268,7 @@ try:
                                                             'bt_tripNum':'bt_trip_num',
                                                             'bt_busCode':'bt_bus_code'}) \
                                 .assign(sched_obs_start_timediff = 
-                                        lambda x: np.absolute(x['bt_start_time'] - x['otp_start_time']))
+                                        lambda x: np.absolute(pd.to_datetime(x['bt_start_time']) - x['otp_start_time']))
 	
 	scheduled_itin_observed_o = scheduled_itin_observed_o[(scheduled_itin_observed_o.otp_mode == "BUS") & (scheduled_itin_observed_o.sched_obs_start_timediff >= pd.Timedelta('0s'))  & (scheduled_itin_observed_o.sched_obs_start_timediff < pd.Timedelta('1.5h'))]
 	scheduled_itin_observed_od = scheduled_itin_observed_o.merge(bus_trips_clean.add_prefix('bt_'),
@@ -317,11 +317,11 @@ try:
 
 	# Choose best actual leg matches (based on feasibility and start time)
 	feasible_legs = choose_leg_matches(scheduled_itin_observed_od_full_clean.groupby(['otp_user_trip_id','otp_itinerary_id','otp_leg_id']))
-	
+
 	if len(feasible_legs) == 0:
-            print ("No matches left after matching and selecting feasible bus legs.")
-            print ("Skipping next steps...")
-            exit(0)
+		print ("No matches left after matching and selecting feasible bus legs.")
+		print ("Skipping next steps...")
+		exit(0)
 
 	# Filtering out itineraries which lost bus legs after feasible legs choice processing
 	feasible_itins_num_legs = feasible_legs.groupby(['otp_user_trip_id','otp_itinerary_id']) \
@@ -347,7 +347,7 @@ try:
 	itineraries_legs_duplicates_dropped = itineraries_legs_duplicates_dropped[~itineraries_legs_duplicates_dropped.duplicated(['otp_leg_id','otp_mode','otp_route','bt_bus_code','bt_trip_num', 'otp_from_stop_id','otp_start_time','bt_start_time','sched_obs_start_timediff','otp_to_stop_id','otp_end_time','bt_end_time','sched_obs_end_timediff']).groupby(itineraries_legs_duplicates_dropped['otp_itinerary_id']).transform('any')]
 	
 	# Filters itineraries whose routes have lost legs 
-	output_bulma_otp = itineraries_legs_duplicates_dropped.groupby(['otp_user_trip_id','otp_itinerary_id']).filter(lambda x: len(x.otp_leg_id) == 5)
+	output_bulma_otp = itineraries_legs_duplicates_dropped#.groupby(['otp_user_trip_id','otp_itinerary_id']).filter(lambda x: len(x.otp_leg_id) == 5)
 	output_bulma_otp.to_csv("data/output/output_bulma_otp_2019_02_01.csv",index=False)
 
 	print ("Processing time:", time.time() - exec_start_time, "s")

@@ -31,12 +31,17 @@ sort_cols = boarding_key_cols + gps_key_cols[:-1] + ['gps_datetime']
 max_match_diff = 1800
 
 
+def get_itineraries(otp_url,latitude, longitude, date, start_time, route,matrix):
+    for index, row in matrix.iterrows():
+      return get_otp_itineraries(otp_url,latitude,longitude,row['shapeLat'],row['shapeLon'],date,start_time,route,verbose=False)
+
 #Functions
 def printUsage():
 	print ("Usage: " + sys.argv[0] + " <enhanced-buste-folder-path> <output-folder-path> <otp-server-url> <initial-date> <final-date>")
 	
 def get_otp_itineraries(otp_url,o_lat,o_lon,d_lat,d_lon,date,time,route,verbose=False):
 	otp_http_request = 'routers/cg/plan?fromPlace={},{}&toPlace={},{}&mode=TRANSIT,WALK&date={}&time={}&numItineraries=500&maxWalkingDistance=1000'
+	
 	
 	otp_request_url = otp_url + otp_http_request.format(o_lat,o_lon,d_lat,d_lon,date.strip(),time,route)
 	print(otp_request_url)
@@ -46,7 +51,7 @@ def get_otp_itineraries(otp_url,o_lat,o_lon,d_lat,d_lon,date,time,route,verbose=
 
 	return json.loads(urllib.request.urlopen(otp_request_url).read())
 
-def get_otp_suggested_trips(od_matrix,otp_url):
+def get_otp_suggested_trips(od_matrix,otp_url,bus_matrix):
 	
 
 	req_duration = []
@@ -62,8 +67,8 @@ def get_otp_suggested_trips(od_matrix,otp_url):
 		#UFCG -7.217167, -35.908995
 		#print(row['gpsLat'])
 		#print(row['gpsLon'])
-		trip_plan = get_otp_itineraries(otp_url,row['shapeLat'], row['shapeLon'], row['gpsLat'], row['gpsLon'], date,start_time, row['route'])
-		#print(trip_plan)
+		trip_plan = get_itineraries(otp_url,row['shapeLat'], row['shapeLon'], date,start_time, row['route'],bus_matrix)
+		#print(trip_plan) 
 		req_end_time = time.time()
 		req_time = req_end_time - req_start_time
 		req_duration.append((id,req_time))
@@ -124,9 +129,10 @@ def prepare_otp_legs_df(otp_legs_list):
 	
 
 #Teste para verificar a montagem de itinerarios para todos onibus da cidade
-user_trips_file = os.getcwd() + "/data/input/2019_02_01_bus_trips.csv"
+user_trips_file = os.getcwd() + "/data/input/2019_02_02_bus_trips.csv"
 output_folder_path = os.getcwd() + "/data/output/" 
 otp_server_url = "http://localhost:5601/otp/"
+bus_trips = pd.read_csv('/home/hector/TCC/bulma_matching/february/BuLMABusTE_02-02-2019/2019_02_02_bus_trips_tratado.csv')
 execution_time = time.time()
 
 print ("Processing file", user_trips_file)
@@ -145,13 +151,13 @@ else:
 		user_trips['gps_datetime'] = pd.to_datetime(user_trips['gps_datetime'], format='%d-%m-%Y %H:%M:%S')
 		#gps_trips['gps_datetime'] = pd.to_datetime(gps_trips['gps_datetime'], format='%d-%m-%Y %H:%M:%S')
 
-		with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-			future = executor.submit(get_otp_suggested_trips, user_trips,otp_server_url)
-			#otp_suggestions = get_otp_suggested_trips,(user_trips,otp_server_url)
-			otp_suggestions = future.result()
-			otp_legs_df = prepare_otp_legs_df(extract_otp_trips_legs(otp_suggestions))
-			otp_legs_df.drop_duplicates(subset=['date','user_trip_id','leg_id','otp_end_time','mode', 'route','otp_duration_mins', 'from_stop_id', 'to_stop_id'], inplace=True)
-		
+		#with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+			#future = executor.submit(get_otp_suggested_trips, user_trips,otp_server_url,bus_trips)
+		otp_suggestions = get_otp_suggested_trips(user_trips,otp_server_url,bus_trips)
+			#otp_suggestions = future.result()
+		otp_legs_df = prepare_otp_legs_df(extract_otp_trips_legs(otp_suggestions))
+		otp_legs_df.drop_duplicates(subset=['date','user_trip_id','leg_id','otp_end_time','mode', 'route','otp_duration_mins', 'from_stop_id', 'to_stop_id'], inplace=True)
+
 
 		otp_legs_df.to_csv(output_folder_path + '/' + file_name + '_otp_itineraries.csv',index=False)
 		print("--- %s seconds ---" % (time.time() - execution_time))

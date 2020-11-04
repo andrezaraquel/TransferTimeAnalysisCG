@@ -55,7 +55,7 @@ def get_otp_suggested_trips(od_matrix,otp_url):
         
         req_start_time = time.time()
         #UFCG -7.217167, -35.908995
-        trip_plan = get_otp_itineraries(otp_url,row['shapeLat'], row['shapeLon'], '-7.217167', '-35.908995', date,start_time, row['route'])
+        trip_plan = get_otp_itineraries(otp_url,row['shapeLat'], row['shapeLon'], row['gpsLat'], row['gpsLon'], date,start_time, row['route'])
         # print(trip_plan)
         req_end_time = time.time()
         req_time = req_end_time - req_start_time
@@ -82,8 +82,8 @@ def extract_otp_trips_legs(otp_trips):
                     route = leg['route'] if leg['route'] != '' else None
                     fromStopId = leg['from']['stopId'].split(':')[1] if leg['mode'] == 'BUS' else None
                     toStopId = leg['to']['stopId'].split(':')[1] if leg['mode'] == 'BUS' else None
-                    start_time = long(leg['startTime'])/1000
-                    end_time = long(leg['endTime'])/1000
+                    start_time = int(leg['startTime'])/1000
+                    end_time = int(leg['endTime'])/1000
                     duration = (end_time - start_time)/60
                     trips_legs.append((date,trip,itinerary_id,leg_id,start_time,end_time,leg['mode'],route,fromStopId,toStopId, duration))
                     
@@ -115,19 +115,21 @@ def prepare_otp_legs_df(otp_legs_list):
 #otp_server_url = sys.argv[3]
 
 
-user_trips_file = os.getcwd() + "/data/input/2019_05_13_bus_trips.csv"
+user_trips_file = os.getcwd() + "/data/input/2019_02_01_bus_trips.csv"
 output_folder_path = os.getcwd() + "/data/output/" 
 otp_server_url = "http://localhost:5601/otp/"
 
 print ("Processing file", user_trips_file)
 file_name = user_trips_file.split('/')[-1].replace('.csv','')
 file_date = pd.to_datetime(file_name.split('_bus_trips')[0],format='%Y_%m_%d')
-if (file_date.dayofweek == 6):
+if (file_date.dayofweek == 5):
     print ("File date is sunday. File will not be processed.")
 else:
     try:
         user_trips = pd.read_csv(user_trips_file, low_memory=False)
         # Filtering just trips starting from Hector's home (bus stop)
+        user_trips = user_trips.loc[(user_trips['gps_datetime'] != '-')]
+        #user_trips['gps_datetime'] = pd.to_datetime(user_trips['gps_datetime'], format='%d-%m-%Y %H:%M:%S')
         gps_trips = user_trips.loc[(user_trips['stopPointId'] == 491551)]
         gps_trips = gps_trips.loc[(gps_trips['gps_datetime'] != '-')] 
         gps_trips['gps_datetime'] = pd.to_datetime(gps_trips['gps_datetime'], format='%d-%m-%Y %H:%M:%S')
@@ -137,7 +139,7 @@ else:
         otp_legs_df.drop_duplicates(subset=['date','user_trip_id','leg_id','otp_end_time','mode', 'route','otp_duration_mins', 'from_stop_id', 'to_stop_id'], inplace=True)
 
         
-        otp_legs_df.to_csv(output_folder_path + '/' + file_name + '_otp_itineraries.csv',index=False)
+        otp_legs_df.to_csv(output_folder_path + '/' + file_name + '_otp_itineraries_teste.csv',index=False)
     except Exception as e:
         print (e)
         print ("Error in processing file " + file_name)
